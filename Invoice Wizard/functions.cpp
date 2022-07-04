@@ -125,5 +125,8 @@ void deleteInvoice()
     }
 
     std::filesystem::remove(invoices[currentInvoices]);
+    
+    cout << "Deleting was successful!\n";
+
     return loadInvoices();
 }

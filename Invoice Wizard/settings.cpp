@@ -113,56 +113,7 @@ void loadSettings(int currentInvoices)
     ifstream fsetting;
     fsetting.open("setting.iwconfig");
     if (!fsetting) {
-        int userChoice;
-        userChoice = 0;
-
-        cout << "Do you want to create setting file?\n";
-        cout << "1 - Yes\n";
-        cout << "2 - No\n";
-        cin >> userChoice;
-        if (userChoice <= 0) {
-            cout << "Please enter number biger than 0\n";
-            return loadSettings(InvociesAmount);
-        }
-        else if (userChoice > 2) {
-            cout << "Please enter number lower than 3\n";
-            return loadSettings(InvociesAmount);
-        }
-        else {
-            switch (userChoice) {
-            case 1:
-                return createSettings();
-                break;
-
-            case 2:
-                cout << "If you wont create settings Invoice Wizard wont remember total invoices\n";
-                cout << "Are you sure you dont want to create setting file?\n";
-                cout << "1 - Yes\n";
-                cout << "2 - No\n";
-                cin >> userChoice;
-                if (userChoice <= 0) {
-                    cout << "Please enter number biger than 0\n";
-                    return loadSettings(InvociesAmount);
-                }
-                else if (userChoice > 2) {
-                    cout << "Please enter number lower than 3\n";
-                    return loadSettings(InvociesAmount);
-                }
-                else {
-                    switch (userChoice) {
-                    case 1:
-                        options(InvociesAmount);
-                        return;
-                        break;
-
-                    case 2:
-                        return loadSettings(InvociesAmount);
-                        break;
-                    }
-                }
-                break;
-            }
-        }
+        return createSettings();
     }
     fsetting >> num;
     while (!fsetting.eof()) {
