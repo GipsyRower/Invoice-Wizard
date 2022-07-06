@@ -123,6 +123,9 @@ void deleteInvoice()
     if (currentInvoices == 1) {
         currentInvoices = 0;
     }
+    else {
+        currentInvoices--;
+    }
 
     std::filesystem::remove(invoices[currentInvoices]);
     

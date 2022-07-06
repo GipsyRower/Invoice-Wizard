@@ -19,7 +19,7 @@ void addInvoices()
 
     ifstream fsetting;
 
-    fsetting.open("setting.iwconfig");
+    fsetting.open("setting.cfg");
 
     fsetting >> num;
     while (!fsetting.eof()) {
@@ -29,9 +29,15 @@ void addInvoices()
 
     fsetting.close();
 
+    totalInvoices = num;
+
+    cout << "Add invoices before " << totalInvoices << "\n";
+
     totalInvoices++;
 
-    std::ofstream outfile("setting.iwconfig");
+    cout << "Add invoices after " << totalInvoices << "\n";
+
+    std::ofstream outfile("setting.cfg");
 
     outfile << totalInvoices;
 
@@ -85,7 +91,7 @@ void createSettings()
     int InvociesAmount;
     InvociesAmount = 0;
 
-    std::ofstream outfile("setting.iwconfig");
+    std::ofstream outfile("setting.cfg");
 
     outfile << "0\n";
 
@@ -111,7 +117,7 @@ void loadSettings(int currentInvoices)
     num = 0;
 
     ifstream fsetting;
-    fsetting.open("setting.iwconfig");
+    fsetting.open("setting.cfg");
     if (!fsetting) {
         return createSettings();
     }
@@ -121,6 +127,7 @@ void loadSettings(int currentInvoices)
         fsetting >> num;
     }
     fsetting.close();
+    InvociesAmount = num;
     return options(InvociesAmount);
 }
 
